@@ -29,11 +29,6 @@
             padding: 20px;
             margin: 15px;
             width: 200px;
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: scale(1.05);
         }
 
         button {
@@ -43,16 +38,6 @@
             background: #00ffcc;
             cursor: pointer;
             font-weight: bold;
-        }
-
-        .locked {
-            background: rgba(255,255,255,0.05);
-        }
-
-        .footer {
-            margin-top: 30px;
-            font-size: 14px;
-            opacity: 0.7;
         }
     </style>
 </head>
@@ -64,88 +49,125 @@
 
 <div class="container">
 
-    <!-- Day 1 -->
     <div class="card">
         <h2>Day 1</h2>
-        <p>Introduction</p>
         <button onclick="openDay(1)">Start</button>
     </div>
 
-    <!-- Day 2 -->
-    <div class="card locked">
-        <h2>Day 2 🔒</h2>
+    <div class="card">
+        <h2>Day 2</h2>
+        <p id="timer2">🔒 Locked</p>
         <button onclick="unlockDay(2)">Unlock</button>
     </div>
 
-    <!-- Day 3 -->
-    <div class="card locked">
-        <h2>Day 3 🔒</h2>
+    <div class="card">
+        <h2>Day 3</h2>
+        <p id="timer3">🔒 Locked</p>
         <button onclick="unlockDay(3)">Unlock</button>
     </div>
 
-    <!-- Day 4 -->
-    <div class="card locked">
-        <h2>Day 4 🔒</h2>
+    <div class="card">
+        <h2>Day 4</h2>
+        <p id="timer4">🔒 Locked</p>
         <button onclick="unlockDay(4)">Unlock</button>
     </div>
 
-    <!-- Day 5 -->
-    <div class="card locked">
-        <h2>Day 5 🔒</h2>
+    <div class="card">
+        <h2>Day 5</h2>
+        <p id="timer5">🔒 Locked</p>
         <button onclick="unlockDay(5)">Unlock</button>
     </div>
 
-    <!-- Day 6 -->
-    <div class="card locked">
-        <h2>Day 6 🔒</h2>
+    <div class="card">
+        <h2>Day 6</h2>
+        <p id="timer6">🔒 Locked</p>
         <button onclick="unlockDay(6)">Unlock</button>
     </div>
 
-    <!-- Day 7 -->
-    <div class="card locked">
-        <h2>Day 7 🔒</h2>
+    <div class="card">
+        <h2>Day 7</h2>
+        <p id="timer7">🔒 Locked</p>
         <button onclick="unlockDay(7)">Unlock</button>
     </div>
 
 </div>
 
-<div class="footer">
-    <p>💡 Tip: Complete each day to unlock the next</p>
-</div>
-
 <script>
+const COOLDOWN = 1 * 60 * 1000; // 1 minute (change later)
+
 function openDay(day){
     if(day === 1 || localStorage.getItem("day" + day)){
         window.location = "day" + day + ".html";
     } else {
-        alert("🔒 Locked! Watch ad or wait.");
+        alert("🔒 Locked!");
     }
 }
+
 
 function unlockDay(day){
-    let lastUnlock = localStorage.getItem("time" + day);
+    let last = localStorage.getItem("time" + day);
+    let unlocked = localStorage.getItem("day" + day);
 
-    if(lastUnlock){
-        let now = new Date().getTime();
-        let diff = now - lastUnlock;
-
-        if(diff < 2 * 60 * 60 * 1000){ // 2 hours cooldown
-            alert("⏳ Come back later or watch ad!");
-            return;
-        }
+    // already unlocked → open page
+    if(unlocked){
+        openDay(day);
+        return;
     }
 
-    showAd(day);
-}
+    // first click → start timer
+    if(!last){
+        localStorage.setItem("time" + day, Date.now());
+        alert("⏳ Timer started!");
+        return;
+    }
 
-function showAd(day){
-    alert("🎬 Fake Ad Playing... (you'll add real ads later)");
+    let now = Date.now();
+    let diff = now - last;
 
+    if(diff < COOLDOWN){
+        alert("⏳ Still waiting!");
+        return;
+    }
+
+    // cooldown finished → unlock
     localStorage.setItem("day" + day, "unlocked");
-    localStorage.setItem("time" + day, new Date().getTime());
-
-    alert("✅ Day " + day + " Unlocked!");
+    alert("✅ Unlocked! Click again to open.");
 }
+
+function updateTimers(){
+    for(let i = 2; i <= 7; i++){
+        let el = document.getElementById("timer" + i);
+        if(!el) continue;
+
+        let unlocked = localStorage.getItem("day" + i);
+        let last = localStorage.getItem("time" + i);
+
+        if(unlocked){
+            el.innerHTML = "✅ Unlocked";
+            continue;
+        }
+
+        if(!last){
+            el.innerHTML = "🔒 Locked";
+            continue;
+        }
+
+        let now = Date.now();
+        let diff = now - last;
+        let remaining = COOLDOWN - diff;
+
+        if(remaining > 0){
+            let m = Math.floor(remaining / 60000);
+            let s = Math.floor((remaining % 60000) / 1000);
+            el.innerHTML = "⏳ " + m + "m " + s + "s";
+        } else {
+            el.innerHTML = "🔓 Ready";
+        }
+    }
+}
+
+setInterval(updateTimers, 1000);
+updateTimers();
 </script>
 
 </body>
