@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Day 4</title>
+<style>
+body{background:#0f172a;color:white;font-family:Arial}
+.container{max-width:800px;margin:auto;padding:20px}
+.card{background:#1e293b;padding:20px;margin:20px 0;border-radius:10px}
+.code{background:black;color:#00ffcc;padding:10px;border-radius:8px;font-family:monospace}
+button{padding:10px;background:#00ffcc;border:none;border-radius:8px}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>🤔 Day 4 - If Statements</h1>
+
+<div class="card">
+<p>If checks conditions.</p>
+</div>
+
+<div class="card">
+<div class="code">
+age = 18<br>
+if age >= 18:<br>
+&nbsp;&nbsp;print("Adult")
+</div>
+</div>
+
+<div class="card">
+<h2>Task</h2>
+<p>Check if number > 10.</p>
+<button onclick="alert('Smart 😏')">Done</button>
+<button onclick="finishDay()">✅ Complete Day</button>
+</div>
+
+<button onclick="window.location='index.html'">Back</button>
+</div>
+<script>
+function finishDay(){
+    let day = window.location.pathname.match(/day(\d+)/)[1];
+
+    localStorage.setItem("completed" + day, "yes");
+
+    alert("🎉 Day " + day + " Completed!");
+
+    window.location = "index.html";
+}
+</script>
+</body>
+</html>

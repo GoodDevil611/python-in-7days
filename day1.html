@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Day 1 - Python Basics</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #0f172a;
+            color: white;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #00ffcc;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .code {
+            background: black;
+            padding: 15px;
+            border-radius: 8px;
+            color: #00ffcc;
+            font-family: monospace;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            background: #00ffcc;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🐍 Day 1 - What is Python?</h1>
+
+<div class="card">
+    <h2>💡 What is Python?</h2>
+    <p>Python is a programming language used to create games, websites, and even AI.</p>
+    <p>It is very easy to learn and looks like normal English.</p>
+</div>
+
+<div class="card">
+    <h2>🧪 Your First Program</h2>
+    <div class="code">
+        print("Hello World")
+    </div>
+    <p>This line tells Python to display text on the screen.</p>
+</div>
+
+<div class="card">
+    <h2>🤔 How it works</h2>
+    <p><b>print()</b> → shows something on screen</p>
+    <p>"Hello World" → the text we want to show</p>
+</div>
+
+<div class="card">
+    <h2>🎯 Your Task</h2>
+    <p>Write a program that prints your name.</p>
+    <button onclick="alert('Nice! You are learning Python 🚀')">I did it!</button>
+    <button onclick="finishDay()">✅ Complete Day</button>
+</div>
+
+<button onclick="window.location='index.html'">⬅ Back</button>
+
+</div>
+<script>
+function finishDay(){
+    let day = window.location.pathname.match(/day(\d+)/)[1];
+
+    localStorage.setItem("completed" + day, "yes");
+
+    alert("🎉 Day " + day + " Completed!");
+
+    window.location = "index.html";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Day 3</title>
+<style>
+body{background:#0f172a;color:white;font-family:Arial}
+.container{max-width:800px;margin:auto;padding:20px}
+.card{background:#1e293b;padding:20px;margin:20px 0;border-radius:10px}
+.code{background:black;color:#00ffcc;padding:10px;border-radius:8px;font-family:monospace}
+button{padding:10px;background:#00ffcc;border:none;border-radius:8px}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>⌨️ Day 3 - Input</h1>
+
+<div class="card">
+<p>Input lets users type data.</p>
+</div>
+
+<div class="card">
+<div class="code">
+name = input("Enter name: ")<br>
+print(name)
+</div>
+</div>
+
+<div class="card">
+<h2>Task</h2>
+<p>Ask user age.</p>
+<button onclick="alert('Nice 😄')">Done</button>
+<button onclick="finishDay()">✅ Complete Day</button>
+</div>
+
+<button onclick="window.location='index.html'">Back</button>
+</div>
+<script>
+function finishDay(){
+    let day = window.location.pathname.match(/day(\d+)/)[1];
+
+    localStorage.setItem("completed" + day, "yes");
+
+    alert("🎉 Day " + day + " Completed!");
+
+    window.location = "index.html";
+}
+</script>
+</body>
+</html>
