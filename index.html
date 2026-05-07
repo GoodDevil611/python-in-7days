@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learn Python in 7 Days</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#121212,#1f1f3d,#2c2c54);
+    color:white;
+    min-height:100vh;
+    text-align:center;
+    padding:20px;
+}
+
+/* HEADER */
+
+h1{
+    font-size: clamp(2rem,6vw,3.5rem);
+    margin-top:20px;
+}
+
+.subtitle{
+    margin-top:10px;
+    color:#cccccc;
+    font-size:1rem;
+}
+
+/* PROGRESS */
+
+.progress-container{
+    width:100%;
+    max-width:700px;
+    margin:25px auto;
+    background:#333;
+    border-radius:30px;
+    overflow:hidden;
+    height:22px;
+}
+
+#progressBar{
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,#00ffcc,#00bfff);
+    border-radius:30px;
+    transition:0.4s;
+}
+
+#progressText{
+    margin-top:10px;
+    font-size:1rem;
+}
+
+/* GRID */
+
+.container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    width:100%;
+    max-width:1100px;
+    margin:auto;
+    padding:20px 0;
+}
+
+/* CARD */
+
+.card{
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:20px;
+    padding:25px 20px;
+    transition:0.3s;
+    box-shadow:0 4px 20px rgba(0,0,0,0.3);
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card h2{
+    margin-bottom:15px;
+    font-size:1.5rem;
+}
+
+.card p{
+    margin-bottom:15px;
+    color:#dddddd;
+}
+
+/* BUTTON */
+
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(90deg,#00ffcc,#00bfff);
+    color:black;
+    font-weight:bold;
+    font-size:1rem;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.03);
+}
+
+button:active{
+    transform:scale(0.98);
+}
+
+/* SUPPORT SECTION */
+
+.support-card{
+    max-width:400px;
+    margin:30px auto;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    body{
+        padding:15px;
+    }
+
+    .card{
+        padding:20px 15px;
+    }
+
+    button{
+        font-size:0.95rem;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- TOP AD -->
+
+<div style="display:flex;justify-content:center;margin-bottom:20px;overflow:auto;">
+<script>
+  atOptions = {
+    'key' : 'b5ddea26071a38f448b65c9799f1cd11',
+    'format' : 'iframe',
+    'height' : 50,
+    'width' : 320,
+    'params' : {}
+  };
+</script>
+
+<script src="https://www.highperformanceformat.com/b5ddea26071a38f448b65c9799f1cd11/invoke.js"></script>
+</div>
+
+<!-- TITLE -->
+
+<h1>🐍 Learn Python in 7 Days</h1>
+<p class="subtitle">
+Start from zero → become a beginner coder 🚀
+</p>
+
+<!-- PROGRESS -->
+
+<div class="progress-container">
+    <div id="progressBar"></div>
+</div>
+
+<p id="progressText">0/7 Completed</p>
+
+<!-- DAY CARDS -->
+
+<div class="container">
+
+    <div class="card">
+        <h2>Day 1</h2>
+        <p>Python Basics</p>
+        <button onclick="openDay(1)">Start</button>
+    </div>
+
+    <div class="card">
+        <h2>Day 2</h2>
+        <p id="timer2">🔒 Locked</p>
+        <button onclick="unlockDay(2)">Unlock</button>
+    </div>
+
+    <div class="card">
+        <h2>Day 3</h2>
+        <p id="timer3">🔒 Locked</p>
+        <button onclick="unlockDay(3)">Unlock</button>
+    </div>
+
+    <div class="card">
+        <h2>Day 4</h2>
+        <p id="timer4">🔒 Locked</p>
+        <button onclick="unlockDay(4)">Unlock</button>
+    </div>
+
+    <div class="card">
+        <h2>Day 5</h2>
+        <p id="timer5">🔒 Locked</p>
+        <button onclick="unlockDay(5)">Unlock</button>
+    </div>
+
+    <div class="card">
+        <h2>Day 6</h2>
+        <p id="timer6">🔒 Locked</p>
+        <button onclick="unlockDay(6)">Unlock</button>
+    </div>
+
+    <div class="card">
+        <h2>Day 7</h2>
+        <p id="timer7">🔒 Locked</p>
+        <button onclick="unlockDay(7)">Unlock</button>
+    </div>
+
+</div>
+
+<!-- SUPPORT SECTION -->
+
+<div class="card support-card">
+
+    <h2>❤️ Support Us</h2>
+
+    <p>
+        Watching ads helps keep this website free 🙌
+    </p>
+
+    <div style="display:flex;justify-content:center;overflow:auto;">
+
+        <script>
+        atOptions = {
+            'key' : '82175bea99acaeef25e4c492a9d38b36',
+            'format' : 'iframe',
+            'height' : 250,
+            'width' : 300,
+            'params' : {}
+        };
+        </script>
+
+        <script src="https://www.highperformanceformat.com/82175bea99acaeef25e4c492a9d38b36/invoke.js"></script>
+
+    </div>
+
+</div>
+
+<script>
+
+/* =========================
+   PROGRESS SYSTEM
+========================= */
+
+function completeDay(day){
+
+    localStorage.setItem("completed" + day, "yes");
+
+    updateProgress();
+}
+
+function updateProgress(){
+
+    let completed = 0;
+
+    for(let i = 1; i <= 7; i++){
+
+        if(localStorage.getItem("completed" + i)){
+            completed++;
+        }
+    }
+
+    let percent = (completed / 7) * 100;
+
+    document.getElementById("progressBar").style.width = percent + "%";
+
+    document.getElementById("progressText").innerText =
+    completed + "/7 Completed";
+}
+
+/* =========================
+   DAY SYSTEM
+========================= */
+
+const COOLDOWN = 1 * 60 * 1000;
+
+/* OPEN DAY */
+
+function openDay(day){
+
+    if(day === 1){
+
+        window.location.href = "day1.html";
+        return;
+    }
+
+    if(localStorage.getItem("completed" + (day - 1))){
+
+        window.location.href = "day" + day + ".html";
+
+    } else {
+
+        alert("🔒 Complete previous day first!");
+    }
+}
+
+/* UNLOCK */
+
+function unlockDay(day){
+
+    let last = localStorage.getItem("time" + day);
+
+    let unlocked = localStorage.getItem("day" + day);
+
+    if(unlocked){
+
+        openDay(day);
+        return;
+    }
+
+    if(!last){
+
+        localStorage.setItem("time" + day, Date.now());
+
+        alert("⏳ Timer started! Come back after 1 minute.");
+
+        return;
+    }
+
+    let now = Date.now();
+
+    let diff = now - last;
+
+    if(diff < COOLDOWN){
+
+        alert("⏳ Still waiting!");
+
+        return;
+    }
+
+    localStorage.setItem("day" + day, "unlocked");
+
+    alert("✅ Day unlocked! Click again to open.");
+}
+
+/* TIMER UPDATE */
+
+function updateTimers(){
+
+    for(let i = 2; i <= 7; i++){
+
+        let el = document.getElementById("timer" + i);
+
+        if(!el) continue;
+
+        let unlocked = localStorage.getItem("day" + i);
+
+        let last = localStorage.getItem("time" + i);
+
+        if(unlocked){
+
+            el.innerHTML = "✅ Unlocked";
+
+            continue;
+        }
+
+        if(!last){
+
+            el.innerHTML = "🔒 Locked";
+
+            continue;
+        }
+
+        let now = Date.now();
+
+        let diff = now - last;
+
+        let remaining = COOLDOWN - diff;
+
+        if(remaining > 0){
+
+            let m = Math.floor(remaining / 60000);
+
+            let s = Math.floor((remaining % 60000) / 1000);
+
+            el.innerHTML = "⏳ " + m + "m " + s + "s";
+
+        } else {
+
+            el.innerHTML = "🔓 Ready";
+        }
+    }
+}
+
+setInterval(updateTimers,1000);
+
+updateTimers();
+
+updateProgress();
+
+</script>
+
+</body>
+</html>
